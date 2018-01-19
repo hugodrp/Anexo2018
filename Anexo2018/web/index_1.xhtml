@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dataTable var="item" value="#{anexo2Controller.listado()}" 
+                         widgetVar="anexo2018" emptyMessage="No se encontró funcionario">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Buscar todos los campos: " />
+                        <p:inputText id="filtroGlobal" onkeyup="PF('anexo2018').filter()" 
+                                     style="width: 150px" placeholder="Ingrese criterio" />
+                    </p:outputPanel>
+                </f:facet>
+                <p:column filterBy="#{item.codPerson}" headerText="CI" footerText="contains" filterMatchMode="contains">
+                    <h:outputText value="#{item.codPerson}" />
+                </p:column>
+
+                
+
+
+
+
+                <p:column headerText="CI">
+                    <h:outputText value="#{item.codPerson}"/>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{item.nomPerson}"/>
+                </p:column>
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{item.apePerson}"/>
+                </p:column>
+                <p:column headerText="Salario">
+                    <h:outputText value="#{item.monCatego}"/>
+                </p:column>
+                <p:column headerText="Categoría">
+                    <h:outputText value="#{item.codCatego}"/>
+                </p:column>
+                <p:column headerText="Rubro">
+                    <h:outputText value="#{item.codPuesto}"/>
+                </p:column>
+                <p:column headerText="Cargo">
+                    <h:outputText value="#{item.desCargo}"/>
+                </p:column>
+                <p:column headerText="Relación Laboral">
+                    <h:outputText value="#{item.indTiprel}"/>
+                </p:column>
+                <p:column headerText="Dirección General">
+                    <h:outputText value="#{item.desUnieje}"/>
+                </p:column>
+                <p:column headerText="Dirección">
+                    <h:outputText value="#{item.nomDepen}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

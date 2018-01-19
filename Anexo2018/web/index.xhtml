@@ -9,36 +9,68 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{anexo2Controller.listado()}" var="item">
-                <p:column headerText="CI">
-                    <h:outputText value="#{item.codPerson}"/>
+            <p:dataTable var="item" value="#{anexo2Controller.listado()}" 
+                         widgetVar="anexo2018" emptyMessage="No se encontró el funcionario/a">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Buscar en todos los campos: " />
+                        <p:inputText id="filtroGlobal" onkeyup="PF('anexo2018').filter()" 
+                                     style="width: 150px" placeholder="Ingrese criterio" />
+                    </p:outputPanel>
+                </f:facet>
+                <p:column filterBy="#{item.codPerson}" headerText="CI">
+                    <h:outputText value="#{item.codPerson}" />
                 </p:column>
-                <p:column headerText="Nombre">
-                    <h:outputText value="#{item.nomPerson}"/>
+                <p:column filterBy="#{item.nomPerson}" headerText="Nombre">
+                    <h:outputText value="#{item.nomPerson}" />
                 </p:column>
-                <p:column headerText="Apellido">
-                    <h:outputText value="#{item.apePerson}"/>
+                <p:column filterBy="#{item.apePerson}" headerText="Apellido">
+                    <h:outputText value="#{item.apePerson}" />
                 </p:column>
-                <p:column headerText="Salario">
-                    <h:outputText value="#{item.monCatego}"/>
+                <p:column filterBy="#{item.monCatego}" headerText="Salario">
+                    <h:outputText value="#{item.monCatego}" />
                 </p:column>
-                <p:column headerText="Categoría">
-                    <h:outputText value="#{item.codCatego}"/>
+                <p:column filterBy="#{item.codCatego}" headerText="Categoría">
+                    <h:outputText value="#{item.codCatego}" />
                 </p:column>
-                <p:column headerText="Rubro">
-                    <h:outputText value="#{item.codPuesto}"/>
+                <p:column filterBy="#{item.codPuesto}" headerText="Rubro">
+                    <h:outputText value="#{item.codPuesto}" />
                 </p:column>
-                <p:column headerText="Cargo">
-                    <h:outputText value="#{item.desCargo}"/>
+                <p:column filterBy="#{item.desCargo}" headerText="Cargo">
+                    <h:outputText value="#{item.desCargo}" />
                 </p:column>
-                <p:column headerText="Relación Laboral">
-                    <h:outputText value="#{item.indTiprel}"/>
+                <!--
+                <p:column filterBy="#{item.desCargo}" headerText="Cargo">
+                    <f:facet name="filter">
+                        <p:selectCheckboxMenu label="Cargos" onchange="PF('anexo2018').filter()" 
+                                              panelStyle="width:125px" scrollHeight="150">
+                            <f:selectItems value="#{dtFilterView.colors}" />
+                        </p:selectCheckboxMenu>
+                    </f:facet>
+                    <h:outputText value="#{item.desCargo}" />
                 </p:column>
-                <p:column headerText="Dirección General">
-                    <h:outputText value="#{item.desUnieje}"/>
+                -->
+                <p:column filterBy="#{item.indTiprel}" headerText="Rel. Laboral">
+                    <h:outputText value="#{item.indTiprel}" />
                 </p:column>
-                <p:column headerText="Dirección">
-                    <h:outputText value="#{item.nomDepen}"/>
+                <!--
+                <p:column filterBy="#{item.indTiprel}" headerText="Relación Laboral">
+                    <f:facet name="filter">
+                        <p:selectOneButton onchange="PF('anexo2018').filter()">
+                            <f:converter converterId="javax.faces.Boolean" />
+                            <f:selectItem itemLabel="N" itemValue="" />
+                            <f:selectItem itemLabel="C" itemValue="true" />
+                            <f:selectItem itemLabel="J" itemValue="false" />
+                        </p:selectOneButton>
+                    </f:facet>
+                    <h:outputText value="#{item.indTiprel ? 'Nombrado': 'Contratado'}" />
+                </p:column>
+                -->
+                <p:column filterBy="#{item.desUnieje}" headerText="Dir. Gral.">
+                    <h:outputText value="#{item.desUnieje}" />
+                </p:column>
+                <p:column filterBy="#{item.nomDepen}" headerText="Dirección">
+                    <h:outputText value="#{item.nomDepen}" />
                 </p:column>
             </p:dataTable>
         </h:form>
