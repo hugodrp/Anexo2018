@@ -5,21 +5,25 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="/resources/images/favicon-16x16.png" />
+        <title>.:: Consulta del Anexo 2018 ::.</title>
     </h:head>
     <h:body>
+        <h1> <p:outputLabel value="Consulta Anexo 2018 - Provisorio"  /> </h1>
         <h:form>
             <p:dataTable var="item" value="#{anexo2Controller.listado()}" rows="5" paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
-                         
                          widgetVar="anexo2018" emptyMessage="No se encontró el funcionario/a">
                 <f:facet name="header">
+                    <!--
                     <p:outputPanel>
                         <h:outputText value="Buscar en todos los campos: " />
                         <p:inputText id="filtroGlobal" onkeyup="PF('anexo2018').filter()" 
                                      style="width: 150px" placeholder="Ingrese criterio" />
+                    
                     </p:outputPanel>
+                    -->
                 </f:facet>
                 <p:column filterBy="#{item.codPerson}" headerText="CI">
                     <h:outputText value="#{item.codPerson}" />
@@ -31,13 +35,17 @@
                     <h:outputText value="#{item.apePerson}" />
                 </p:column>
                 <p:column filterBy="#{item.monCatego}" headerText="Salario">
-                    <h:outputText value="#{item.monCatego}" />
+                    <h:outputText value="#{item.monCatego}">
+                        <f:convertNumber type="number" />
+                    </h:outputText>
                 </p:column>
                 <p:column filterBy="#{item.codCatego}" headerText="Categoría">
                     <h:outputText value="#{item.codCatego}" />
                 </p:column>
                 <p:column filterBy="#{item.codPuesto}" headerText="Rubro">
-                    <h:outputText value="#{item.codPuesto}" />
+                    <h:outputText value="#{item.codPuesto}">
+                        <f:convertNumber type="number" />
+                    </h:outputText>
                 </p:column>
                 <p:column filterBy="#{item.desCargo}" headerText="Cargo">
                     <h:outputText value="#{item.desCargo}" />
